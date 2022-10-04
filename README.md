@@ -23,7 +23,8 @@ DB_USER = 'postgres'
 DB_PASSWORD= '1234'
 DB_HOST = 'localhost'
 ```
-
+If you don't put secret key in '.env', you project crashed.
+`python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'` - generate and print random SECRET_KEY in bash terminal.
 You can add what ever you want in settings.
 Some example: you need add some service api key
 
