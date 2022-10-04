@@ -28,13 +28,13 @@ If you don't put secret key in '.env', you project crashed.
 You can add what ever you want in settings.
 Some example: you need add some service api key
 
-##### In .env:
+#### In .env:
 ```bash
 SOME_SERVICE_API_KEY = 'my_string_api_key'
 SOME_PORT = 1234
 SOME_BOOLEAN = True
 ```
-##### In settings.py
+#### In settings.py
 ```python
 import os
 from dotenv import load_dotenv
