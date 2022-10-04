@@ -5,7 +5,7 @@ This is template for Django projects with environment and Postgres DB.
 Also I use django-debug-toolbar
 
 ### In terminal:
-```cd``` - go to main folder
+`cd` - go to main folder
 `mkdir "name"` - create new folder with your "name"
 `cd "name"` - change directory to created
 `git clone https://github.com/Geg3mon/django-config` - clone repository
