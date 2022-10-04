@@ -5,12 +5,18 @@ This is template for Django projects with environment and Postgres DB.
 Also I use django-debug-toolbar
 
 ### In terminal:
-~~~`cd`~~~~ - go to main folder
-~~`mkdir "name"`~~ - create new folder with your "name"
+`cd` - go to main folder
+
+`mkdir "name"` - create new folder with your "name"
+
 `cd "name"` - change directory to created
+
 `git clone https://github.com/Geg3mon/django-config` - clone repository
+
 `python3 -m venv venv` - create virtual environment
+
 `source venv/bin/activate` - activate your environment
+
 `pip install -r requirements.txt` - install requirments
 
 ### Update .env file with your configuration
