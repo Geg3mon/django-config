@@ -138,3 +138,33 @@ if DEBUG:
     INTERNAL_IPS = [
         "127.0.0.1",
     ]
+    
+    
+# LOGGER SETTINGS
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        "main_format":{
+            "format": "{asctime} - {levelname} - {module} - {filename} - {message}",
+            "style": "{",
+        },
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_format'
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    }
+}
+
