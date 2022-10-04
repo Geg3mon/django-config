@@ -30,7 +30,12 @@ DB_PASSWORD= '1234'
 DB_HOST = 'localhost'
 ```
 If you don't put secret key in '.env', you project crashed.
-`python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'` - generate and print random SECRET_KEY in bash terminal.
+This command generate and print random SECRET_KEY in bash terminal.
+
+c
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
 You can add what ever you want in settings.
 Some example: you need add some service api key
 
@@ -55,6 +60,15 @@ API_LOGS = os.getenv('SOME_BOOLEAN')
 Remember, when you push to git or deploy repository, add '.env' to .gitignore
 
 ### Migrate and run your project
-`python manage.py makemigrations` - make migrations
-`python manage.py migrate` - apply migrations
-`python manage.py runserver` - run your Django server
+```bash
+python manage.py makemigrations
+```
+- make migrations
+```bash
+python manage.py migrate
+``` 
+- apply migrations
+```bash
+python manage.py runserver
+```
+- run your Django server
