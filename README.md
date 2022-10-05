@@ -32,7 +32,7 @@ DB_HOST = 'localhost'
 If you don't put secret key in '.env', you project crashed.
 This command generate and print random SECRET_KEY in bash terminal.
 
-c
+```bash
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 
