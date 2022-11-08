@@ -1,6 +1,5 @@
 from django.utils.translation import gettext_lazy as _
 
-
 CURRENCY_CODES = (
     ("AED", _("AED, Dirham")),
     ("AFN", _("AFN, Afghani")),
@@ -400,7 +399,7 @@ COUNTRIES = (
     ("UZ", _("Uzbekistan")),
     ("VU", _("Vanuatu")),
     ("VE", _("Venezuela")),
-    ("VN", _("Viet Nam")),
+    ("VN", _("Vietnam")),
     ("VG", _("Virgin Islands, British")),
     ("VI", _("Virgin Islands, U.S.")),
     ("WF", _("Wallis and Futuna")),
@@ -411,8 +410,9 @@ COUNTRIES = (
 )
 
 LANGUAGE =(
-    ('en', _("English")),
-    ('ru', _("Russian")),
+    ('EN', _("English")),
+    ('RU', _("Russian")),
+
 )
 
 LEAD_STATUS = (

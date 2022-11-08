@@ -103,7 +103,7 @@ celerybeat.pid
 
 # Environments
 # TODO: replace this comment when push to github
-#.env
+.env
 .venv
 env/
 venv/
