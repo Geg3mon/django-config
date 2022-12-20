@@ -15,6 +15,9 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from .djoser_settings import DJOSER
+from .rest_settings import REST_FRAMEWORK
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,14 +32,29 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+# CORS setting
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
 
-STATIC_URL = "static/"
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
 
+#SET DOMAIN AND NAME FOR HEROKU
+DOMAIN = os.getenv('DOMAIN')
+SITE_NAME = os.getenv('SITE_NAME')
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,10 +64,12 @@ INSTALLED_APPS = [
 
     # 3rd party libraries
     'debug_toolbar',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -64,7 +84,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,8 +147,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "static/"
+WHITENOISE_USE_FINDERS = True
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-STATIC_URL = 'static/'
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# TODO: Change on release
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -167,4 +199,21 @@ LOGGING = {
             'level': 'INFO',
         },
     }
+}
+
+
+
+# JAZZMIN SETTINGS
+JAZZMIN_SETTINGS = {
+    "site_title": "Config",
+    "site_header": "Config",
+    "site_brand": "Config",
+    "welcome_sign": "Welcome to Config",
+    "copyright": "Hihi",
+    "hide_models": [], # "authtoken.tokenproxy", "auth.group"
+    "show_ui_builder": True,
+    "icons": {
+        # https://fontawesome.com/v5/search
+        # "modul.model": "fas fa-comments",
+},
 }

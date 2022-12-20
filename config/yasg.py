@@ -6,9 +6,9 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title='Exchange',
+        title='Config',
         default_version='v1',
-        description='Test documentation',
+        description='v1 api documentation',
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),

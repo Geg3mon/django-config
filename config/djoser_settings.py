@@ -1,7 +1,7 @@
 DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'ACTIVATION_URL': 'auth/users/activation/{uid}/{token}',
-    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/users/reset/password/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFRIMATION_EMAIL':True,
