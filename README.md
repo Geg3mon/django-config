@@ -22,12 +22,12 @@ Also I use django-debug-toolbar
 ### Update .env file with your configuration
 In basic .env file you can find next settings:
 ```bash
-DEBUG = True
-SECRET_KEY = ' '
-DB_NAME = ' '
-DB_USER = 'postgres'
-DB_PASSWORD= '1234'
-DB_HOST = 'localhost'
+DEBUG=True
+SECRET_KEY=''
+DB_NAME=''
+DB_USER='postgres'
+DB_PASSWORD='1234'
+DB_HOST='localhost'
 ```
 If you don't put secret key in '.env', you project crashed.
 This command generate and print random SECRET_KEY in bash terminal.
@@ -37,7 +37,7 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 ```
 
 You can add what ever you want in settings.
-Some example: you need add some service api key
+Some example: you need add service api key
 
 #### In .env:
 ```bash
@@ -52,9 +52,9 @@ from dotenv import load_dotenv
 
 load_dotenv() #default = '.env'
 
-API_KEY = os.getenv('SOME_SERVICE_API_KEY')
-API_PORT = os.getenv('SOME_PORT')
-API_LOGS = os.getenv('SOME_BOOLEAN')
+SOME_SERVICE_API_KEY = os.getenv('SOME_SERVICE_API_KEY')
+SOME_PORT = os.getenv('SOME_PORT')
+SOME_BOOLEAN = os.getenv('SOME_BOOLEAN')
 ```
 ### .gitignore
 Remember, when you push to git or deploy repository, add '.env' to .gitignore
@@ -66,7 +66,7 @@ python manage.py makemigrations
 - make migrations
 ```bash
 python manage.py migrate
-``` 
+```
 - apply migrations
 ```bash
 python manage.py runserver
