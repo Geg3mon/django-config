@@ -35,7 +35,19 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    "http://localhost",
+    "https://localhost",
+    "http://127.0.0.1",
+    "https://127.0.0.1",
+    "http://0.0.0.0",
+    "https://0.0.0.0",
+    "http://django",
+    "https://django",
+]
+
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",
