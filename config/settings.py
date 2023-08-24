@@ -179,6 +179,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+# Media settings
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
 # Email settings
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # TODO: Change on release
@@ -198,7 +202,6 @@ if DEBUG:
     INTERNAL_IPS = [
         "127.0.0.1",
     ]
-
 
 # LOGGER SETTINGS
 LOGGING = {
