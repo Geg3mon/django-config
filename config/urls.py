@@ -2,12 +2,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from . import views
 
 from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('/secret/admin-room/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('hello/', views.Hello.as_view(), name='enjoy')
 ]
 
 urlpatterns += doc_urls

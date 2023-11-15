@@ -1,15 +1,19 @@
 # DJANGO DEVELOPMENT CONFIG #
 
 # Fast start to development Django project
-This is template for Django projects with environment and Postgres DB.
-Also I use django-debug-toolbar
+This is template for Django app with next stack:
+1. [x] Django
+2. [x] Nginx
+3. [x] docker-compose
+4. [x] PostgreSQL
+5. [x] Swagger/Redoc (read more in documentation)
 
 ### In terminal:
 `cd` - go to main folder
 
 `mkdir "name"` - create new folder with your "name"
 
-`cd "name"` - change directory to created
+`cd "name"` - change directory to created or skip this step
 
 `git clone https://github.com/Geg3mon/django-config` - clone repository
 
@@ -56,8 +60,17 @@ SOME_SERVICE_API_KEY = os.getenv('SOME_SERVICE_API_KEY')
 SOME_PORT = os.getenv('SOME_PORT')
 SOME_BOOLEAN = os.getenv('SOME_BOOLEAN')
 ```
-### .gitignore
-Remember, when you push to git or deploy repository, add '.env' to .gitignore
+
+### If you want use SWAGGER documentation
+If you want use swagger or redoc documentation with limited access, you need to add next settings to .env file
+```bash
+SWAGGER_TITLE = os.getenv("SWAGGER_TITLE", "Config")
+SWAGGER_HEADER = os.getenv("SWAGGER_HEADER", "ConfigToken")
+SWAGGER_TOKEN = os.getenv("SWAGGER_TOKEN", "Test")
+```
+
+You need to modify header, I prefer to use [ModHeader](https://modheader.com/), [ModHeader Chrome Extension](https://chrome.google.com/webstore/detail/modheader-modify-http-hea/idgpnmonknjnojddfkpgkljpfnnfcklj).
+![](./screenshots/swagger_modheader_header.png)
 
 ### Migrate and run your project
 ```bash
@@ -72,3 +85,20 @@ python manage.py migrate
 python manage.py runserver
 ```
 - run your Django server
+
+# Docker
+If you want to run django project in Docker, you need to have Docker, docker-compose on you computer. Skip this step, you can find it on web.\
+In docker-compose.yml:
+```
+db:
+  image: postgres:14\
+  restart: always
+  volumes:
+    - pgdata:/var/lib/postgresql/data
+  environment:
+    - POSTGRES_DB=<YOUR_DB_NAME> - from .env file
+  env_file:
+    - .env
+  ports:
+    - "5433:5432"
+```
