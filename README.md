@@ -64,6 +64,7 @@ SOME_BOOLEAN = os.getenv('SOME_BOOLEAN')
 ### If you want use SWAGGER documentation
 If you want use swagger or redoc documentation with limited access, you need to add next settings to .env file
 ```bash
+SWAGGER_USE_HEADER = bool(os.getenv("SWAGGER_USE_HEADER", False))
 SWAGGER_TITLE = os.getenv("SWAGGER_TITLE", "Config")
 SWAGGER_HEADER = os.getenv("SWAGGER_HEADER", "ConfigToken")
 SWAGGER_TOKEN = os.getenv("SWAGGER_TOKEN", "Test")

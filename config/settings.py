@@ -18,7 +18,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # JWT SETTINGS
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-REST_USE_JWT = bool(os.getenv("REST_USE_JWT"))
+REST_USE_JWT = int(os.getenv("REST_USE_JWT", 1))
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME":    timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME":   timedelta(days=7),
@@ -29,8 +29,9 @@ SIMPLE_JWT = {
     }
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv("DEBUG", False))
+DEBUG = int(os.getenv("DEBUG", 0))
 
+# GETENV VARIABLES
 # SET DOMAIN AND NAME FOR HEROKU
 DOMAIN = os.getenv("DOMAIN")
 SITE_NAME = os.getenv("SITE_NAME")
@@ -48,6 +49,12 @@ REST_FRAMEWORK = {
         "rest_framework.renderers.BrowsableAPIRenderer"
         ),
     }
+
+# SWAGGER SETTINGS
+SWAGGER_USE_HEADER = int(os.getenv("SWAGGER_USE_HEADER"))
+SWAGGER_TITLE = os.getenv("SWAGGER_TITLE")
+SWAGGER_HEADER = os.getenv("SWAGGER_HEADER")
+SWAGGER_TOKEN = os.getenv("SWAGGER_TOKEN")
 
 # CORS AND HOSTS SETTINGS
 ALLOWED_HOSTS = []
@@ -91,11 +98,6 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
     ]
-
-# SWAGGER SETTINGS
-SWAGGER_TITLE = os.getenv("SWAGGER_TITLE", "Config")
-SWAGGER_HEADER = os.getenv("SWAGGER_TOKEN", "ConfigToken")
-SWAGGER_TOKEN = os.getenv("SWAGGER_TOKEN", "Test")
 
 # Application definition
 INSTALLED_APPS = [

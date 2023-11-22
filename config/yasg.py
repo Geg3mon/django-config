@@ -8,18 +8,18 @@ from django.conf import settings
 class DeveloperPermission(BasePermission):
 
     def has_permission(self, request, view):
-        if settings.DEBUG == 'True':
+        if settings.DEBUG == 'True' or not settings.SWAGGER_USE_HEADER:
             return True
+        elif settings.SWAGGER_USE_HEADER:
+            try:
+                swagger_token = request.headers.get(settings.SWAGGER_HEADER)
+                token = swagger_token.split(' ')[1]
 
-        try:
-            swagger_token = request.headers.get(settings.SWAGGER_HEADER)
-            token = swagger_token.split(' ')[1]
+                if token == settings.SWAGGER_TOKEN:
+                    return True
 
-            if token == settings.SWAGGER_TOKEN:
-                return True
-
-        except AttributeError:
-            return False
+            except AttributeError:
+                return False
 
 
 schema_view = get_schema_view(
